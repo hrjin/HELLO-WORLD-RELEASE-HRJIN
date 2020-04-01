@@ -23,11 +23,11 @@ instance_groups:
   networks:
   - name: default
     static_ips:
-    - 172.30.10.130
+    - xxx.xxx.xxx.xxx
     default: [dns, gateway]
-  - name: default
-    static_ips:
-    - 172.30.10.131
+#  - name: default
+#    static_ips:
+#    - xxx.xxx.xxx.xxx
   azs:
   - z5 
   vm_type: minimal
