@@ -1,0 +1,7 @@
+---
+name: hello-world-hrjin
+
+dependencies: []
+
+files:
+- hello-world-hrjin/hello-world-hrjin.war

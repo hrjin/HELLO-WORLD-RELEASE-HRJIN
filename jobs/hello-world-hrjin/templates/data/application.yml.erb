@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: hello-world-hrjin
+
+---
+server:
+  port: <%= p('hello_world.server.port')%>
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  mvc:
+    view:
+      prefix: <%= p('hello_world.spring.mvc.view.prefix')%>
+      suffix: <%= p('hello_world.spring.mvc.view.suffix')%>
+
+java_opts: <%= p('hello_world.java_opts')%>

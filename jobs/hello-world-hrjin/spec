@@ -1,0 +1,21 @@
+---
+name: hello-world-hrjin
+templates:
+  bin/service_ctl.erb: bin/service_ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh: data/properties.sh
+  data/application.yml.erb: data/application.yml
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+packages:
+  - java
+  - hello-world-hrjin
+properties:
+  hello_world.server.port:
+    description: 'server port'
+  hello_world.spring.mvc.view.prefix:
+    description: 'view prefix'
+  hello_world.spring.mvc.view.suffix:
+    description: 'view suffix'
+  hello_world.java_opts:
+    description: 'java option'

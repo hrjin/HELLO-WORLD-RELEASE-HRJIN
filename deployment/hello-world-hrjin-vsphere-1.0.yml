@@ -1,0 +1,47 @@
+---
+name: hello-world-hrjin                              # 서비스 배포이름(필수) bosh deployments 로 확인 가능한 이름
+
+releases:
+- name: hello-world-hrjin-release                    # 서비스 릴리즈 이름(필수) bosh releases로 확인 가능
+  version: latest                                              # 서비스 릴리즈 버전(필수):latest 시 업로드된 서비스 릴리즈 최신버전
+
+stemcells:
+- alias: xenial
+  os: ubuntu-xenial
+  version: "315.64"
+
+update:
+  canaries: 1                            # canary 인스턴스 수(필수)
+  canary_watch_time: 30000-120000        # canary 인스턴스가 수행하기 위한 대기 시간(필수)
+  max_in_flight: 1                       # non-canary 인스턴스가 병렬로 update 하는 최대 개수(필수)
+  update_watch_time: 30000-120000        # non-canary 인스턴스가 수행하기 위한 대기 시간(필수)
+########## WEB SERVICE ##########
+
+instance_groups:
+- name: hello-world-hrjin
+  instances: 1
+  networks:
+  - name: default
+    static_ips:
+    - 172.30.10.130
+    default: [dns, gateway]
+  - name: default
+    static_ips:
+    - 172.30.10.131
+  azs:
+  - z5 
+  vm_type: minimal
+  stemcell: xenial
+  jobs:
+  - name: hello-world-hrjin
+    release: hello-world-hrjin-release 
+    properties:
+      hello_world:    
+        server:
+          port: 8836
+        spring:
+          mvc:
+            view:
+              prefix: /WEB-INF/jsp
+              suffix: .jsp
+        java_opts: '-XX:MaxMetaspaceSize=104857K -Xss349K -Xms681574K -XX:MetaspaceSize=104857K -Xmx681574K'

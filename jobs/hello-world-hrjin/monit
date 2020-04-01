@@ -1,0 +1,5 @@
+check process hello-world-hrjin
+  with pidfile /var/vcap/sys/run/hello-world-hrjin/hello-world-hrjin.pid
+  start program "/var/vcap/jobs/hello-world-hrjin/bin/monit_debugger service_ctl '/var/vcap/jobs/hello-world-hrjin/bin/service_ctl start'" with timeout 20 seconds
+  stop program "/var/vcap/jobs/hello-world-hrjin/bin/monit_debugger service_ctl '/var/vcap/jobs/hello-world-hrjin/bin/service_ctl stop'" with timeout 20 seconds
+  group vcap

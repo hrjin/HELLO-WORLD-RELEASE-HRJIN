@@ -1,0 +1,7 @@
+---
+name: gradle-3.5
+
+dependencies: []
+
+files:
+- gradle/gradle-3.5-bin.zip
